@@ -40,7 +40,7 @@ export default function CrmLayout({ children }) {
 
   return (
     <LayoutProvider sidebarNavItems={MAIN_NAV}>
-      <DefaultLayout sidebarMenuItems={TRIPS_MENU}>{children}</DefaultLayout>
+      <DefaultLayout showSidebar={false}>{children}</DefaultLayout>
     </LayoutProvider>
   );
 }

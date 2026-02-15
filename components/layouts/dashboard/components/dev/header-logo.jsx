@@ -28,16 +28,16 @@ export function HeaderLogo() {
   return (
     <div className="flex items-center gap-1 lg:w-[400px] grow lg:grow-0">
       <div className="flex items-center gap-2 shrink-0">
-        <Link href="/layout-9">
+        <Link href="/dashboard" className="flex items-center gap-2">
           <img
-            src={toAbsoluteUrl('/media/app/mini-logo-circle.svg')}
-            className="shrink-0 dark:hidden min-h-[34px]"
+            src={toAbsoluteUrl('/media/app/favicon.png')}
+            className="shrink-0 dark:hidden h-10"
             alt="logo"
           />
 
           <img
-            src={toAbsoluteUrl('/media/app/mini-logo-circle-dark.svg')}
-            className="shrink-0 hidden dark:inline-block min-h-[34px]"
+            src={toAbsoluteUrl('/media/app/favicon.png')}
+            className="shrink-0 hidden dark:inline-block h-10"
             alt="logo"
           />
         </Link>

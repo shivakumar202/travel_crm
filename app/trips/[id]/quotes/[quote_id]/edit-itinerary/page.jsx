@@ -67,7 +67,6 @@ export default function EditItineraryPage() {
               </div>
             </div>
 
-            {/* Hotels (collapsed) */}
             <details className="bg-white border rounded">
               <summary className="px-4 py-3 cursor-pointer font-medium">Hotels</summary>
               <div className="px-4 pb-4 pt-2">
@@ -75,7 +74,6 @@ export default function EditItineraryPage() {
               </div>
             </details>
 
-            {/* Cabs (collapsed) */}
             <details className="bg-white border rounded">
               <summary className="px-4 py-3 cursor-pointer font-medium">Cabs</summary>
               <div className="px-4 pb-4 pt-2">
@@ -83,7 +81,6 @@ export default function EditItineraryPage() {
               </div>
             </details>
 
-            {/* Inclusion / Exclusion - two column editable lists */}
             <Card>
               <CardHeader className="border-b">
                 <h3 className="font-medium">Inclusion/Exclusion</h3>
@@ -133,7 +130,6 @@ export default function EditItineraryPage() {
               </CardContent>
             </Card>
 
-            {/* Day-wise Schedule */}
             <Card>
               <CardHeader className="border-b">
                 <h3 className="font-medium">Day-wise Schedule</h3>
@@ -162,7 +158,6 @@ export default function EditItineraryPage() {
               </CardContent>
             </Card>
 
-            {/* Important Notes */}
             <details className="bg-white border rounded">
               <summary className="px-4 py-3 cursor-pointer font-medium">Important Notes</summary>
               <div className="px-4 pb-4 pt-2">
@@ -170,7 +165,6 @@ export default function EditItineraryPage() {
               </div>
             </details>
 
-            {/* Terms and Conditions + Things to do */}
             <Card>
               <CardHeader className="border-b">
                 <h3 className="font-medium">Terms and Conditions</h3>
@@ -195,7 +189,6 @@ export default function EditItineraryPage() {
               </CardContent>
             </Card>
 
-            {/* Bottom action buttons */}
             <div className="flex items-center gap-3">
               <Button className="bg-blue-600 text-white">Save Details</Button>
               <Button variant="ghost">Cancel</Button>

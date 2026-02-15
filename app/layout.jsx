@@ -13,6 +13,11 @@ export const metadata = {
     template: '%s | travel_crm',
     default: 'travel_crm', // a default is required when creating a template
   },
+  icons: {
+    icon: '/media/app/favicon.png',
+    shortcut: '/media/app/favicon.png',
+    apple: '/media/app/favicon.png',
+  },
 };
 
 export default async function RootLayout({ children }) {
