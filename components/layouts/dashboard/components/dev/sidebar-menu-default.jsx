@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { MENU_MEGA_MOBILE } from '@/components/layouts/dashboard/components/dev/layout-9.config';
@@ -78,6 +78,18 @@ const matchPath = useCallback(
 
   const buildMenuItemRoot = (item, index) => {
     if (item.children) {
+      if (isMobile) {
+        // On mobile, render expanded list (non-collapsible) for better UX
+        return (
+          <div key={`mobile-root-${index}`} className="mb-1">
+            <div className="px-3 py-2 text-sm font-medium flex items-center gap-2">
+              {item.icon && <item.icon data-slot="accordion-menu-icon" />}
+              <span data-slot="accordion-menu-title">{item.title}</span>
+            </div>
+            <div className="ps-4">{buildMenuItemChildren(item.children, 1)}</div>
+          </div>
+        );
+      }
       return (
         <AccordionMenuSub key={index} value={item.path || `root-${index}`}>
           <AccordionMenuSubTrigger className="text-sm font-medium">
@@ -144,6 +156,21 @@ const matchPath = useCallback(
 
   const buildMenuItemChild = (item, index, level = 0) => {
     if (item.children) {
+      if (isMobile) {
+        // Render children inline on mobile
+        return (
+          <div key={`mobile-child-${level}-${index}`} className="mb-1">
+            <div className="px-2 py-1 text-[13px]">
+              {item.collapse ? (
+                <span className="text-muted-foreground">{item.title}</span>
+              ) : (
+                item.title
+              )}
+            </div>
+            <div className={cn('ps-4')}>{buildMenuItemChildren(item.children, item.collapse ? level : level + 1)}</div>
+          </div>
+        );
+      }
       return (
         <AccordionMenuSub
           key={index}
@@ -219,6 +246,20 @@ const matchPath = useCallback(
   // Memoize the menu to prevent unnecessary re-renders
   const { getChildren } = useMenu(pathname);
   const menuItems = propMenuItems || getChildren(MENU_MEGA_MOBILE, 0);
+
+  // Track mobile viewport to render expanded menu on mobile
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const handle = (e) => setIsMobile(e.matches);
+    setIsMobile(mq.matches);
+    if (mq.addEventListener) mq.addEventListener('change', handle);
+    else mq.addListener(handle);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener('change', handle);
+      else mq.removeListener(handle);
+    };
+  }, []);
 
   return (
     <ScrollArea className="h-full w-full pb-10">
